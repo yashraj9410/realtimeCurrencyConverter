@@ -6,7 +6,10 @@ function App() {
 
   return (
     <>
-      <CurrencyInput />
+      <div>
+        <CurrencyInput val ={"From"} />
+        <CurrencyInput val = {"To"} />
+      </div>
     </>
   )
 }
