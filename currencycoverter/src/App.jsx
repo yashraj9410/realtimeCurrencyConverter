@@ -8,7 +8,8 @@ function App() {
   const [to, setTo] = useState(0)
   const [result,setResult] = useState(0);
 
-  const currencyInfo = useCurrencyInfo(from);
+  const currencyInfo = useCurrencyInfo(from);  // it will hold the object of currency key = currency and value = conversion rate
+  const options = Object.keys(currencyInfo);   // save all the key that are currency to pass to the options in the component
 
   return (
     <>
