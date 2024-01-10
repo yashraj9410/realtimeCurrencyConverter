@@ -4,6 +4,7 @@ function CurrencyInput({
   label,
   amount,
   onAmountChange,
+  selectCurrency="usd",
   currencyOption = [],
   onCurrencyChange
 }) {
@@ -15,10 +16,12 @@ function CurrencyInput({
         </div>
         <div className='flex flex-col'>
             <label >Currency Type</label>
-            <select name="Currency Type" onChange={(e)=> onCurrencyChange && onCurrencyChange(e.target.value)}>
-                {currencyOption.map((currency)=>{
-                  <option value={currency} key={currency}>{currency}</option>
-                })}
+            <select  onChange={(e)=> onCurrencyChange && onCurrencyChange(e.target.value)} value={selectCurrency}>
+
+                {currencyOption.map((currency)=>(
+                  <option key={currency} value={currency} >{currency}</option>
+                ))};
+
             </select>
         </div>
     </div>
