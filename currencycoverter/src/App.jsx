@@ -21,9 +21,9 @@ function App() {
 
   //conversion of amount
   const convertAmount = () => {
-    setResult(amount * setAmount(currencyInfo(to)))
+    setResult(amount * currencyInfo[to])
   }
-
+  
   return (
     <>
       <div>
@@ -31,8 +31,9 @@ function App() {
           e.preventDefault();
           convertAmount();
         }}>
-          <CurrencyInput label={"From"} currencyOption={options} selectCurrency={from} onAmountChange={(amount) => setAmount(amount)} onCurrencyChange={(currency)=>setFrom(currency)}  />
-          <CurrencyInput label={"To"} onCurrencyChange={(currency)=>setTo(currency)} selectCurrency={to} currencyOption={options} />
+          <CurrencyInput label={"From"} amount={amount} currencyOption={options} selectCurrency={from} onAmountChange={(amount) => setAmount(amount)} onCurrencyChange={(currency)=>setFrom(currency)}  />
+          <CurrencyInput label={"To"} amount={result} onCurrencyChange={(currency)=>setTo(currency)} selectCurrency={to} currencyOption={options}  />
+          <button type='submit'>Convert</button>
         </form>
         <button onClick={swapButton}>swap</button>
       </div>
