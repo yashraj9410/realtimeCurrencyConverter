@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 
 // cutom hook basic
-let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`
 
 function useCurrencyInfo(currency) {
+    let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`
     const [data, setData] = useState({});
     useEffect(() => {
         fetch(url)
