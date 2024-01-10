@@ -1,16 +1,24 @@
 import React from 'react'
 
-function CurrencyInput(props) {
+function CurrencyInput({
+  label,
+  amount,
+  onAmountChange,
+  currencyOption = [],
+  onCurrencyChange
+}) {
   return (
     <div className='flex flex-row'>
         <div className='flex flex-col'>
-            <label >{props.val}</label>
-            <input type="text" placeholder='Amount' />
+            <label >{label}</label>
+            <input type="number" placeholder='Amount' onChange={(e)=> onAmountChange && onAmountChange(e.target.value)} value={amount} />
         </div>
         <div className='flex flex-col'>
             <label >Currency Type</label>
-            <select name="Currency Type">
-                <option value="usd">usd</option>
+            <select name="Currency Type" onChange={(e)=> onCurrencyChange && onCurrencyChange(e.target.value)}>
+                {currencyOption.map((currency)=>{
+                  <option value={currency} key={currency}>{currency}</option>
+                })}
             </select>
         </div>
     </div>

@@ -7,8 +7,8 @@ function App() {
   return (
     <>
       <div>
-        <CurrencyInput val ={"From"} />
-        <CurrencyInput val = {"To"} />
+        <CurrencyInput label={"From"}  />
+        <CurrencyInput label={"To"} />
       </div>
     </>
   )
