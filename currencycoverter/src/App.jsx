@@ -1,18 +1,18 @@
 import { useState } from 'react'
-import {CurrencyInput} from './components'     // from the index file
+import { CurrencyInput } from './components'     // from the index file
 import useCurrencyInfo from './hooks/useCurrencyInfo'
 
 function App() {
   const [amount, setAmount] = useState(0)
   const [from, setFrom] = useState("usd")
   const [to, setTo] = useState("inr")
-  const [result,setResult] = useState(0);
+  const [result, setResult] = useState(0);
 
   const currencyInfo = useCurrencyInfo(from);  // it will hold the object of currency key = currency and value = conversion rate
   const options = Object.keys(currencyInfo);   // save all the key that are currency to pass to the options in the component
 
   // functionality for swap button
-  const swapButton = ()=> {
+  const swapButton = () => {
     setFrom(to)
     setTo(from)
     setResult(result)
@@ -23,16 +23,29 @@ function App() {
   const convertAmount = () => {
     setResult(amount * currencyInfo[to])
   }
-  
+
   return (
     <>
       <div>
-        <form onSubmit={(e)=>{
+        <form onSubmit={(e) => {
           e.preventDefault();
           convertAmount();
         }}>
-          <CurrencyInput label={"From"} amount={amount} currencyOption={options} selectCurrency={from} onAmountChange={(amount) => setAmount(amount)} onCurrencyChange={(currency)=>setFrom(currency)}  />
-          <CurrencyInput label={"To"} amount={result} onCurrencyChange={(currency)=>setTo(currency)} selectCurrency={to} currencyOption={options}  />
+          <CurrencyInput
+            label={"From"}
+            amount={amount}
+            currencyOption={options}
+            selectCurrency={from}
+            onAmountChange={(amount) => setAmount(amount)}
+            onCurrencyChange={(currency) => setFrom(currency)}
+          />
+          <CurrencyInput
+            label={"To"}
+            amount={result}
+            onCurrencyChange={(currency) => setTo(currency)}
+            selectCurrency={to}
+            currencyOption={options}
+          />
           <button type='submit'>Convert</button>
         </form>
         <button onClick={swapButton}>swap</button>
