@@ -15,22 +15,23 @@ function App() {
   const swapButton = () => {
     setFrom(to)
     setTo(from)
-    setAmount(amount)
-    convertAmount()
+    setAmount(result)
+    setResult(amount)
   }
 
   //conversion of amount
   const convertAmount = () => {
     setResult(amount * currencyInfo[to])
   }
-
+  
   return (
     <>
-      <div>
-        <form onSubmit={(e) => {
+      <div className='ml-10'>
+        <form className='bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-5 p-5 w-1/3 '
+          onSubmit={(e) => {
           e.preventDefault();
           convertAmount();
-        }}>
+          }}>
           <CurrencyInput
             label={"From"}
             amount={amount}
@@ -40,15 +41,20 @@ function App() {
             onCurrencyChange={(currency) => setFrom(currency)}
           />
           <CurrencyInput
+            className ="gap-5"
             label={"To"}
             amount={result}
             onCurrencyChange={(currency) => setTo(currency)}
             selectCurrency={to}
             currencyOption={options}
           />
-          <button type='submit'>Convert</button>
+          <button
+            className='flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded' 
+            type='submit'>Convert</button>
         </form>
-        <button onClick={swapButton}>swap</button>
+        <button
+          className='flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded' 
+          onClick={swapButton}>Swap Currencies</button>
       </div>
     </>
   )
