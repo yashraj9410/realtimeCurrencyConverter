@@ -15,8 +15,8 @@ function App() {
   const swapButton = () => {
     setFrom(to)
     setTo(from)
-    setResult(result)
     setAmount(amount)
+    convertAmount()
   }
 
   //conversion of amount
