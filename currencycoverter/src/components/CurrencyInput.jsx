@@ -12,7 +12,12 @@ function CurrencyInput({
     <div className='flex flex-row'>
         <div className='flex flex-col'>
             <label >{label}</label>
-            <input type="number" placeholder='Amount' onChange={(e)=> onAmountChange && onAmountChange(e.target.value)} value={amount} />
+            <input
+              type="number" 
+              placeholder='Amount' 
+              onChange={(e)=> onAmountChange && onAmountChange(e.target.value)} 
+              value={amount} 
+            />
         </div>
         <div className='flex flex-col'>
             <label >Currency Type</label>
